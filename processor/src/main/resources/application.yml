@@ -5,5 +5,37 @@ spring:
         convertToUppercase-in-0:
           destination: values-topic
           group: processor
+#          consumer:
+#            maxAttempts: 10
+#            concurrency: 10
         convertToUppercase-out-0:
           destination: uppercase-values-topic
+
+#      rabbit:
+#        bindings:
+#          convertToUppercase-in-0:
+#            consumer:
+#              auto-bind-dlq: true
+#              enableDlq: true
+#              dlqTtl: 5000
+#              republishToDlq: true
+#              prefetch: 50
+#              maxConcurrency: 1000
+#      binders:
+#        rabbitmq:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                host: localhost
+#                port: 5672
+#                username: guest
+#                password: guest
+
+    function:
+      definition: convertToUppercase;
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
